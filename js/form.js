@@ -18,7 +18,7 @@ const submitButton = document.querySelector('.img-upload__submit');
 const preview = document.querySelector('.img-upload__preview img');
 const hashtagField = document.querySelector('.text__hashtags');
 const commentField = document.querySelector('.text__description');
-const effectPreview = document.querySelector('.effects__preview');
+const effectPreview = document.querySelectorAll('.effects__preview');
 
 const SubmitButtonText = {
   IDLE: 'Опубликовать',
@@ -38,8 +38,7 @@ const showForm = () => {
 };
 
 const resetPreview = () => {
-  const effectPreviewArray = Array.from(effectPreview);
-  effectPreviewArray.forEach((element) => {
+  effectPreview.forEach((element) => {
     element.style.backgroundImage = '';
   });
 };
@@ -100,8 +99,7 @@ const onFileInputChange = () => {
 
   if (isImgTypeValid) {
     preview.src = URL.createObjectURL(file);
-    const effectPreviewArray = Array.from(effectPreview);
-    effectPreviewArray.forEach((element) => {
+    effectPreview.forEach((element) => {
       element.style.backgroundImage = `url('${preview.src}')`;
     });
   }
